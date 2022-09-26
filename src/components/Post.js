@@ -24,24 +24,15 @@ export default function Post(){
             {/* <ul> */}
                 {
                     objectEntry.map((el)=>{
-                        let data=Object.entries(el)
+                        // let data=Object.entries(el)
 
                         // console.log(...el)
-                        // return (<section key={el[1].id}>
-                        //     <div>Name:{el[1].first_name+" "+el[1].last_name}</div>
-                        //     <div>Email:{el[1].email}</div>
-                        //     <div>Description:{el[1].text}</div>
-                        //     <div>Image:{el[1].avatar}</div>
-                        // </section>)
-                        el.map((data)=>{
-                            return (
-                                <>
-                                <section>{data.email}</section>
-                                <section>{data.text}</section>
-                                </>
-                            )
-                        })
-                        return el
+                        return (<section key={el[1].id}>
+                            <div>Name:{el[1].first_name+" "+el[1].last_name}</div>
+                            <div>Email:{el[1].email}</div>
+                            <div>Description:{el[1].text}</div>
+                            <div>Image:{el[1].avatar}</div>
+                        </section>)
                     })
                 }
         </div>
