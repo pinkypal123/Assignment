@@ -5,37 +5,30 @@ import { useParams } from "react-router-dom"
 export default function Post(){
     const param=useParams()
     // console.log(param)//id
-    const[post,setPost]=useState({})
+    const[post,setPost]=useState([])
     useEffect(()=>{
         fetch(`https://reqres.in/api/users/${param.userId}`)
         .then((res)=>{
             return res.json();
         })
         .then((data)=>{
-            // console.log(data)
+            console.log(data)
             setPost(data)
         })
     },[])
-    const objectEntry=Object.entries(post)
-    console.log(...objectEntry)
     return(
         <>
-        <div>
-            {/* <ul> */}
-                {
-                    objectEntry.map((el)=>{
-                        // let data=Object.entries(el)
-
-                        // console.log(...el)
-                        return (<section key={el[1].id}>
-                            <div>Name:{el[1].first_name+" "+el[1].last_name}</div>
-                            <div>Email:{el[1].email}</div>
-                            <div>Description:{el[1].text}</div>
-                            <div>Image:{el[1].avatar}</div>
-                        </section>)
-                    })
-                }
-        </div>
+        <div>{post.data.id}</div>
+     <div className="postContainer">
+                
+                <section key={post.data.id}>
+                    <img src={post.data.avatar}/>
+                    <div>Name:{post.data['first_name']+" "+post.data['last_name']}</div>
+                    <div>Email:{post.data.email}</div>
+                    <div>Description:{post.support.text}</div>
+                   </section>
+    
+                </div> 
         </>
     )
 }
